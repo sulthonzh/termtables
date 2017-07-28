@@ -184,7 +184,7 @@ func (t *Table) SetAlign(align tableAlignment, column int) {
 		if !ok {
 			continue
 		}
-		if column >= len(row.cells) {
+		if column > len(row.cells) {
 			continue
 		}
 		row.cells[column-1].alignment = &align
