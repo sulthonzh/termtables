@@ -176,7 +176,7 @@ func (t *Table) AddHeaders(headers ...interface{}) {
 // alignments are stored with each cell, so cells added after a call to
 // SetAlign will not pick up the change.  Columns are numbered from 1.
 func (t *Table) SetAlign(align tableAlignment, column int) {
-	if column < 0 {
+	if column <= 0 {
 		return
 	}
 	for i := range t.elements {
@@ -184,7 +184,7 @@ func (t *Table) SetAlign(align tableAlignment, column int) {
 		if !ok {
 			continue
 		}
-		if column >= len(row.cells) {
+		if column > len(row.cells) {
 			continue
 		}
 		row.cells[column-1].alignment = &align
